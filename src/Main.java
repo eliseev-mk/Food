@@ -9,6 +9,23 @@ public class Main {
         public abstract String getDescription();
     }
 
+    // Конкретные классы супов
+    // Борщ
+    public static class Borscht extends Soup {
+        @Override
+        public String getDescription() {
+            return "Борщ";
+        }
+    }
+
+    // Тыквенный суп
+    public static class PumpkinSoup extends Soup {
+        @Override
+        public String getDescription() {
+            return "Тыквенный суп";
+        }
+    }
+
     // Абстрактная фабрика
     public interface MealFactory {
         Soup createSoup();
@@ -41,7 +58,7 @@ public class Main {
             return null;
         }
     }
-    
+
     public static void main(String[] args) {
         System.out.println("Мясная диета");
         System.out.println("\nВегетерианская диета");
