@@ -94,6 +94,13 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Мясная диета");
+        MealFactory meatFactory = new MeatDietFactory();
+        Lunch meatDiet = new Lunch(meatFactory);
+        meatDiet.showMenu();
+
         System.out.println("\nВегетарианская диета");
+        MealFactory veggieFactory = new VeggieDietFactory();
+        Lunch veggieDiet = new Lunch(veggieFactory);
+        veggieDiet.showMenu();
     }
 }
