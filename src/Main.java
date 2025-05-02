@@ -54,12 +54,12 @@ public class Main {
     public static class MeatDietFactory implements MealFactory {
         @Override
         public Soup createSoup() {
-            return null;
+            return new Borscht();
         }
 
         @Override
         public MainCourse createMainCourse() {
-            return null;
+            return new Cutlet();
         }
     }
 
@@ -67,12 +67,12 @@ public class Main {
     public static class VeggieDietFactory implements MealFactory {
         @Override
         public Soup createSoup() {
-            return null;
+            return new PumpkinSoup();
         }
 
         @Override
         public MainCourse createMainCourse() {
-            return null;
+            return new FriedPotatoes();
         }
     }
 
