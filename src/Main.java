@@ -76,6 +76,22 @@ public class Main {
         }
     }
 
+    // Клиентский класс, использующий фабрику
+    public static class Lunch {
+        private final Soup soup;
+        private final MainCourse mainCourse;
+
+        public Lunch(MealFactory factory) {
+            this.soup = factory.createSoup();
+            this.mainCourse = factory.createMainCourse();
+        }
+
+        public void showMenu() {
+            System.out.println("Суп: " + soup.getDescription());
+            System.out.println("Главное блюдо: " + mainCourse.getDescription());
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("Мясная диета");
         System.out.println("\nВегетарианская диета");
