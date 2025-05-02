@@ -1,11 +1,17 @@
 public class Main {
     // Абстрактные классы (абстрактный продукт)
+    // Суп
     public static abstract class Soup {
         public abstract String getDescription();
     }
 
     // Главное блюдо (абстрактный продукт)
     public static abstract class MainCourse {
+        public abstract String getDescription();
+    }
+
+    // Десерт
+    public static abstract class Dessert {
         public abstract String getDescription();
     }
 
@@ -43,10 +49,28 @@ public class Main {
         }
     }
 
+    // Конкретные классы десертов
+    // Шоколадный торт
+    public static class ChocolateCake extends Dessert {
+        @Override
+        public String getDescription() {
+            return "Шоколадный торт";
+        }
+    }
+
+    //Круассан
+    public static class Croissant extends Dessert {
+        @Override
+        public String getDescription() {
+            return "Круассан";
+        }
+    }
+
     // Абстрактная фабрика
     public interface MealFactory {
         Soup createSoup();
         MainCourse createMainCourse();
+        Dessert createDessert();
     }
 
     // Конкретные фабрики
@@ -61,6 +85,11 @@ public class Main {
         public MainCourse createMainCourse() {
             return new Cutlet();
         }
+
+        @Override
+        public Dessert createDessert() {
+            return new ChocolateCake();
+        }
     }
 
     // Вегетарианская диета
@@ -74,21 +103,29 @@ public class Main {
         public MainCourse createMainCourse() {
             return new FriedPotatoes();
         }
+
+        @Override
+        public Dessert createDessert() {
+            return new Croissant();
+        }
     }
 
     // Клиентский класс, использующий фабрику
     public static class Lunch {
         private final Soup soup;
         private final MainCourse mainCourse;
+        private final Dessert dessert;
 
         public Lunch(MealFactory factory) {
             this.soup = factory.createSoup();
             this.mainCourse = factory.createMainCourse();
+            this.dessert = factory.createDessert();
         }
 
         public void showMenu() {
             System.out.println("Суп: " + soup.getDescription());
             System.out.println("Главное блюдо: " + mainCourse.getDescription());
+            System.out.println("Десерт: " + dessert.getDescription());
         }
     }
 
