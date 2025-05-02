@@ -26,6 +26,23 @@ public class Main {
         }
     }
 
+    // Конкретные классы вторых блюд
+    //Жареная картошка
+    public static class FriedPotatoes extends MainCourse {
+        @Override
+        public String getDescription() {
+            return "Жареная картошка";
+        }
+    }
+
+    // Котлета
+    public static class Cutlet extends MainCourse {
+        @Override
+        public String getDescription() {
+            return "Котлета";
+        }
+    }
+
     // Абстрактная фабрика
     public interface MealFactory {
         Soup createSoup();
@@ -46,7 +63,7 @@ public class Main {
         }
     }
 
-    // Вегетерианская диета
+    // Вегетарианская диета
     public static class VeggieDietFactory implements MealFactory {
         @Override
         public Soup createSoup() {
@@ -61,6 +78,6 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Мясная диета");
-        System.out.println("\nВегетерианская диета");
+        System.out.println("\nВегетарианская диета");
     }
 }
