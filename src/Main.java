@@ -32,6 +32,14 @@ public class Main {
         }
     }
 
+    // Окрошка
+    public static class Okroshka extends Soup {
+        @Override
+        public String getDescription() {
+            return "Окрошка";
+        }
+    }
+
     // Конкретные классы вторых блюд
     //Жареная картошка
     public static class FriedPotatoes extends MainCourse {
@@ -49,6 +57,14 @@ public class Main {
         }
     }
 
+    // Пудинг
+    public static class Pudding extends MainCourse {
+        @Override
+        public String getDescription() {
+            return "Пудинг";
+        }
+    }
+
     // Конкретные классы десертов
     // Шоколадный торт
     public static class ChocolateCake extends Dessert {
@@ -63,6 +79,14 @@ public class Main {
         @Override
         public String getDescription() {
             return "Круассан";
+        }
+    }
+
+    //Йогурт
+    public static class Yogurt extends Dessert {
+        @Override
+        public String getDescription() {
+            return "Йогурт";
         }
     }
 
@@ -110,6 +134,24 @@ public class Main {
         }
     }
 
+    // Кефирная диета
+    public static class KefirDietFactory implements MealFactory {
+        @Override
+        public Soup createSoup() {
+            return new Okroshka();
+        }
+
+        @Override
+        public MainCourse createMainCourse() {
+            return new Pudding();
+        }
+
+        @Override
+        public Dessert createDessert() {
+            return new Yogurt();
+        }
+    }
+
     // Клиентский класс, использующий фабрику
     public static class Lunch {
         private final Soup soup;
@@ -139,5 +181,10 @@ public class Main {
         MealFactory veggieFactory = new VeggieDietFactory();
         Lunch veggieDiet = new Lunch(veggieFactory);
         veggieDiet.showMenu();
+
+        System.out.println("\nКефирная диета");
+        MealFactory kefirFactory = new KefirDietFactory();
+        Lunch kefirDiet = new Lunch(kefirFactory);
+        kefirDiet.showMenu();
     }
 }
